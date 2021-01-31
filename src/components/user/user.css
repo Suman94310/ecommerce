@@ -1,0 +1,17 @@
+.user{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.user_detail{
+    display: flex;
+}
+
+.user_bought{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+}

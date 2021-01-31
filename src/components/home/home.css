@@ -1,0 +1,35 @@
+.home{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+}
+.home_bestTitle{
+    color: #ffffff;
+}
+
+.home_bestTabLinks{
+    color: #969B9C;
+    display: flex;
+}
+
+.home_bestTabLink{
+    margin-right: 4vw;
+    cursor: pointer;
+}
+
+.home_bestTabLinks .active{
+    color: #ffffff;
+}
+
+.home_bestTab{
+    display: none;
+}
+
+.home_bestTabs .active{
+    display: flex;
+    /* flex-wrap: wrap;
+    justify-content: center; */
+    overflow: auto;
+}
+

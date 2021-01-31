@@ -1,0 +1,39 @@
+.normalCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+    background-color:  #3B4445;
+    border-radius: 10px;
+}
+
+.normalCard_description{
+    background-color:  #3B4445;
+    width: 100%;
+    border-radius: 0 0 12px 12px;
+    font-size: small;
+    font-weight: 500;
+}
+
+.normalCard_description > div{
+    padding: 15px 10px 10px 10px;
+}
+
+.normalCard_image img{
+    height: 113px;
+    width: 75px;
+}
+
+.normalCard_image {
+    height: 100%;
+    width: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -4,9 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import {StateProvider} from "./stateProvider"
+import reducer, {initialState} from "./reducer"
+
+import { CookiesProvider } from 'react-cookie';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CookiesProvider>
+      <StateProvider initialState={initialState} reducer={reducer}>
+        <App />
+      </StateProvider>
+    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
