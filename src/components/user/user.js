@@ -26,10 +26,9 @@ function User() {
                 token: cookies.woodToken.token
             }
         }).then(res=>{
-            console.log(history,res.data)
             setHistory(res.data)
         })
-    },[cookies.woodToken.token, history])
+    },[cookies.woodToken.token])
     
     return (
         <div className="user">
