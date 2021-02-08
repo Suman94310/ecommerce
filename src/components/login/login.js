@@ -9,7 +9,7 @@ import { useCookies } from 'react-cookie';
 function Login() {
 
     const [, dispatch] = useStateValue()
-    const [ setCookie] = useCookies(['woodToken']);
+    const [ ,setCookie,] = useCookies(['woodToken']);
 
 
     const login = (e)=>{
