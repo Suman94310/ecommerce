@@ -17,7 +17,7 @@ function Cart() {
     useEffect(() => {
         // getting user
         axios({
-            url:"http://localhost:8000/tokenToUser/",
+            url:"https://suman-ecommerce-api.herokuapp.com/tokenToUser/",
             method:"post",
             headers:{
                 Authorization: "Token "+cookies.woodToken.token
@@ -28,7 +28,7 @@ function Cart() {
         }).then(res=>{
             // getting products
             axios({
-                url:"http://localhost:8000/products/?bought=False",
+                url:"https://suman-ecommerce-api.herokuapp.com/products/?bought=False",
                 method:"get",
                 headers:{
                     Authorization: "Token "+cookies.woodToken.token
@@ -49,7 +49,7 @@ function Cart() {
     const buy = ()=>{
         cart.forEach(item => {
             axios({
-                url:"http://localhost:8000/products/"+item.id+"/",
+                url:"https://suman-ecommerce-api.herokuapp.com/products/"+item.id+"/",
                 method:'put',
                 headers:{
                     Authorization: "Token "+cookies.woodToken.token

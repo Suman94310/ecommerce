@@ -56,7 +56,7 @@ function Sidebar(props) {
 
     const addToCart = ()=>{
         axios({
-            url:"http://localhost:8000/products/",
+            url:"https://suman-ecommerce-api.herokuapp.com/products/",
             method:"post",
             headers:{
                 Authorization: "Token "+token

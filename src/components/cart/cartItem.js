@@ -10,7 +10,7 @@ function CartItem({id, image, name, price}) {
 
     const deleteProduct = ()=>{
         axios({
-            url:"http://localhost:8000/products/"+id+"/",
+            url:"https://suman-ecommerce-api.herokuapp.com/products/"+id+"/",
             method:"DELETE",
             headers:{
                 Authorization: "Token "+cookies.woodToken.token

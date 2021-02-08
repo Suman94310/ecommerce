@@ -23,7 +23,7 @@ function Navbar() {
     useEffect(()=>{
         if(cookies.woodToken){
             axios({
-                url:"http://localhost:8000/tokenToUser/",
+                url:"https://suman-ecommerce-api.herokuapp.com/tokenToUser/",
                 method:"post",
                 headers:{
                     Authorization: "Token "+cookies.woodToken.token
@@ -44,7 +44,7 @@ function Navbar() {
     const doSearch = (e)=>{
         e.preventDefault()
         axios({
-            url:"http://localhost:8000/ListItems?search="+search,
+            url:"https://suman-ecommerce-api.herokuapp.com/ListItems?search="+search,
             method:'get',
         }).then(res=>{
             dispatch({

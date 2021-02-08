@@ -17,7 +17,7 @@ function User() {
 
     useEffect(()=>{
         axios({
-            url:"http://localhost:8000/products/?bought=True",
+            url:"https://suman-ecommerce-api.herokuapp.com/products/?bought=True",
             method:"get",
             headers:{
                 Authorization: "Token "+cookies.woodToken.token

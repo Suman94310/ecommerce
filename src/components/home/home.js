@@ -15,7 +15,7 @@ function Home() {
     const [tags, setTags] = useState([])
 
     useEffect(()=>{
-        axios.get("http://localhost:8000/ListItems/").then(res=>{
+        axios.get("https://suman-ecommerce-api.herokuapp.com/ListItems/").then(res=>{
             setItems(res.data)
         })
         let tabLinks = document.getElementsByClassName("home_bestTabLink")

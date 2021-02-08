@@ -15,7 +15,7 @@ function Login() {
     const login = (e)=>{
         e.preventDefault()
         axios.post(
-            "http://localhost:8000/api-token-auth/",
+            "https://suman-ecommerce-api.herokuapp.com/api-token-auth/",
             new FormData(document.getElementById("login_form"))
         ).then((res)=>{
             if(res.status === 200){
