@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react'
+import {React, useEffect} from 'react'
 import "./cart.css"
 import {useStateValue} from "../../stateProvider"
 import axios from 'axios'
@@ -10,9 +10,9 @@ import { getCartTotal } from '../../reducer'
 
 function Cart() {
     // const [{selected, token}, dispatch] = useStateValue()
-    const [{cart, token}, dispatch] = useStateValue()
-    const [total, setTotal] = useState(0)
-    const [cookies, setCookie, removeCookie] = useCookies(['woodToken']);
+    const [{cart}, dispatch] = useStateValue()
+    // const [total, setTotal] = useState(0)
+    const [cookies] = useCookies(['woodToken']);
 
     useEffect(() => {
         // getting user
@@ -44,7 +44,7 @@ function Cart() {
             })
         })
         
-    },[]);
+    },[dispatch, cookies.woodToken.token]);
 
     const buy = ()=>{
         cart.forEach(item => {

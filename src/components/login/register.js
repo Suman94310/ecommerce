@@ -37,7 +37,7 @@ function Register() {
                     <input type="password" name="password"/>
                     <button type="submit" className="login_submit">SUBMIT</button>
                 </form>
-                <p className="login_register">Already have an account ? login <a href="#">here</a></p>
+                <p className="login_register">Already have an account ? login <a href="/login">here</a></p>
             </div>
         </div>
     )

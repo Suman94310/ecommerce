@@ -1,12 +1,11 @@
-import {React, useEffect} from 'react'
+import {React} from 'react'
 import "./normalCard.css"
 
 import {useStateValue} from "../../stateProvider"
 
-import background from "./background.svg"
 
 function NormalCard(props) {
-    const [{selected}, dispatch] = useStateValue()
+    const [, dispatch] = useStateValue()
 
 
     const handleClick =()=>{
@@ -20,6 +19,10 @@ function NormalCard(props) {
             }
         })
         sideBar.style.visibility = 'visible'
+        dispatch({
+            type: 'set-sidebar',
+            value: true
+        })
     }
 
     return (

@@ -2,7 +2,9 @@ export const initialState = {
     user: undefined,
     token: undefined,
     cart: [],
-    selected: undefined
+    selected: undefined,
+    searchItems: [],
+    sideBarVisible: false
 }
 
 export const getCartTotal = (cart)=>{
@@ -20,7 +22,7 @@ function reducer(state, action){
         case 'add-to-cart':
             return {...state, cart:[...state.cart, action.item]}
         case 'delete-from-cart':
-            let newCart = state.cart.filter(item=>item.id != action.id)
+            let newCart = state.cart.filter(item=>item.id !== action.id)
             return {...state, cart:newCart}
         case 'empty-cart':
             return {...state, cart:[]}
@@ -28,6 +30,10 @@ function reducer(state, action){
             return {...state, cart:action.cart}
         case 'set-selected':
             return {...state, selected: action.selected}
+        case 'set-search':
+            return {...state, searchItems: action.searchItems}
+        case 'set-sidebar':
+            return {...state, sideBarVisible: action.value}
         default:
             return state
     }

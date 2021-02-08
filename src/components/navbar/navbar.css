@@ -33,11 +33,15 @@
     border-radius: 7px;
 }
 
+.navbar_search>input:focus{
+    outline: none;
+}
+
 .navbar_links{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 5%;
+    width: 10%;
 }
 
 .navbar_links div{

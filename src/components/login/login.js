@@ -9,25 +9,22 @@ import { useCookies } from 'react-cookie';
 function Login() {
 
     const [, dispatch] = useStateValue()
-    const [cookies, setCookie, removeCookie] = useCookies(['woodToken']);
+    const [ setCookie] = useCookies(['woodToken']);
 
 
     const login = (e)=>{
         e.preventDefault()
-        // console.log(state)
         axios.post(
             "http://localhost:8000/api-token-auth/",
             new FormData(document.getElementById("login_form"))
         ).then((res)=>{
-            // console.log(res)
             if(res.status === 200){
                 dispatch({
                     type: 'set-token',
                     token: res.data.token
                 })
-                let date = (new Date()).getUTCSeconds
+                // let date = (new Date()).getUTCSeconds
                 setCookie("woodToken", res.data, {path: "/"});
-                // console.log(cookies)
             }
         })  
     }
@@ -45,7 +42,7 @@ function Login() {
                     <input type="password" name="password"/>
                     <button type="submit" className="login_submit">SUBMIT</button>
                 </form>
-                <p className="login_register">Don't have an account ? register <a href="#">here</a></p>
+                <p className="login_register">Don't have an account ? register <a href="/login">here</a></p>
             </div>
         </div>
     )

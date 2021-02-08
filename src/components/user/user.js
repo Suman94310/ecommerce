@@ -10,7 +10,7 @@ import {useStateValue} from "../../stateProvider"
 
 
 function User() {
-    const [cookies, setCookie, removeCookie] = useCookies(['woodToken']);
+    const [cookies] = useCookies(['woodToken']);
     const [history, setHistory] = useState([])
     const [{user},] = useStateValue()
 
@@ -29,7 +29,7 @@ function User() {
             console.log(history,res.data)
             setHistory(res.data)
         })
-    },[])
+    },[cookies.woodToken.token, history])
     
     return (
         <div className="user">

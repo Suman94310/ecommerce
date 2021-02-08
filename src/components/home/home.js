@@ -1,4 +1,6 @@
 import {React, useState, useEffect} from 'react'
+
+
 import axios from 'axios'
 import "./home.css"
 import './checkbox.css'
@@ -7,19 +9,10 @@ import "./tab.js"
 import Card from "../card/card"
 import NormalCard from "../card/normalCard"
 
-import chair from "./test.svg"
-
 function Home() {
 
-    const [bests, setBests] = useState([
-        {
-            image: chair,
-            name: "Chair",
-            price: 400
-        }
-    ])
-
-    const [items, setItems] = useState()
+    const [items, setItems] = useState([])
+    const [tags, setTags] = useState([])
 
     useEffect(()=>{
         axios.get("http://localhost:8000/ListItems/").then(res=>{
@@ -36,9 +29,22 @@ function Home() {
                 tabLinks[i].classList.add("active")
                 tabs[i].classList.add("active")
             }
-            
         }
     },[])
+
+    const handletag = (e,tag)=>{
+        let index = tags.indexOf(tag)
+        let temp = [...tags]
+        if(index >= 0){
+            temp.splice(index,1)
+            setTags(temp)
+        }
+        else{
+            temp.push(tag)
+            setTags(temp)
+
+        }
+    }
 
     const createCards = (tag)=>{
         let cards = []
@@ -85,28 +91,47 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="home_items">
-                    <div className="home_tags">
-                        <label class="container">One
-                            <input type="checkbox" checked="checked"/>
-                            <span class="checkmark"></span>
-                        </label>
+            </div>
+            <h2 className="home_itemsTitle">
+                Find Our Other Products
+                <i class="fas fa-angle-down"></i>
+            </h2>
+            <div className="home_items">
+                <div className="home_tags">
+                    {/* TAGS */}
+                    <label class="checkboxContainer" >Chair
+                        <input type="checkbox" value="Chair" onClick={(e)=>handletag(e,'chair')}/>
+                        <span class="checkmark" onClick={(e)=>handletag(e,'chair')}></span>
+                    </label>
 
-                        <label class="container">Two
-                            <input type="checkbox"/>
-                            <span class="checkmark"></span>
-                        </label>
+                    <label class="checkboxContainer" >Table
+                        <input type="checkbox" value="Chair" onClick={(e)=>handletag(e,'table')} onChange={(e)=>handletag(e,'table')}/>
+                        <span class="checkmark" onClick={(e)=>handletag(e,'table')}></span>
+                    </label>
 
-                        <label class="container">Three
-                            <input type="checkbox"/>
-                            <span class="checkmark"></span>
-                        </label>
+                    <label class="checkboxContainer" >Sofa
+                        <input type="checkbox" value="Chair" onClick={(e)=>handletag(e,'sofa')}/>
+                        <span class="checkmark" onClick={(e)=>handletag(e,'sofa')}></span>
+                    </label>
 
-                        <label class="container">Four
-                            <input type="checkbox"/>
-                            <span class="checkmark"></span>
-                        </label> 
-                    </div>
+                    <label class="checkboxContainer" >Decorations
+                        <input type="checkbox" value="Chair" onClick={(e)=>handletag(e,'decorations')}/>
+                        <span class="checkmark" onClick={(e)=>handletag(e,'decorations')}></span>
+                    </label>
+                </div>
+                <div className="home_itemsList">
+                    {
+                        items.map(item=>{
+                            if(tags.indexOf(item.tag)>-1){
+                                return <NormalCard
+                                    image = {item.image}
+                                    name = {item.name}
+                                    price = {item.price}
+                                />
+                            }
+                            return undefined
+                        })
+                    }
                 </div>
             </div>
         </div>

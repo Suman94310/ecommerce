@@ -5,7 +5,7 @@ import {useStateValue} from "../../stateProvider"
 
 
 function CartItem({id, image, name, price}) {
-    const [cookies, setCookie, removeCookie] = useCookies(['woodToken']);
+    const [cookies] = useCookies(['woodToken']);
     const [,dispatch] = useStateValue()
 
     const deleteProduct = ()=>{

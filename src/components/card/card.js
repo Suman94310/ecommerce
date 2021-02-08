@@ -1,4 +1,4 @@
-import {React, useEffect} from 'react'
+import {React} from 'react'
 import "./card.css"
 
 import {useStateValue} from "../../stateProvider"
@@ -6,12 +6,12 @@ import {useStateValue} from "../../stateProvider"
 import background from "./background.svg"
 
 function Card(props) {
-    const [{selected}, dispatch] = useStateValue()
+    const [, dispatch] = useStateValue()
 
-    useEffect(()=>{
-        // let cardBackground = document.getElementById
+    // useEffect(()=>{
+    //     // let cardBackground = document.getElementById
         
-    },[])
+    // },[])
 
 
     const handleClick =()=>{

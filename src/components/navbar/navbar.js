@@ -1,4 +1,5 @@
-import {React, useEffect} from 'react'
+import {React, useEffect, useState} from 'react'
+import { useHistory } from "react-router-dom";
 
 import './navbar.css'
 import logo from "./logo.svg"
@@ -10,31 +11,49 @@ import axios from 'axios';
 import {useCookies} from "react-cookie"
 
 
-
 function Navbar() {
-    const [{user},dispatch] = useStateValue()
-    const [cookies, setCookie, removeCookie] = useCookies(['woodToken']);
+    const [{user}, dispatch] = useStateValue()
+    const [search, setSearch] = useState()
+    // setCookie, removeCookie add this bellow with cookies if it stops loging
+    const [cookies] = useCookies(['woodToken']);
+    let history = useHistory();
+
 
 
     useEffect(()=>{
-        axios({
-            url:"http://localhost:8000/tokenToUser/",
-            method:"post",
-            headers:{
-                Authorization: "Token "+cookies.woodToken.token
-            },
-            data:{
-                token: cookies.woodToken.token
-            }
-        }).then(res=>{
-            console.log(res)
-            dispatch({
-                type:'set-user',
-                user:res.data
+        if(cookies.woodToken){
+            axios({
+                url:"http://localhost:8000/tokenToUser/",
+                method:"post",
+                headers:{
+                    Authorization: "Token "+cookies.woodToken.token
+                },
+                data:{
+                    token: cookies.woodToken.token
+                }
+            }).then(res=>{
+                console.log(res)
+                dispatch({
+                    type:'set-user',
+                    user:res.data
+                })
             })
-            console.log("blyat")
+        }
+    },[cookies.woodToken, dispatch])
+
+    const doSearch = (e)=>{
+        e.preventDefault()
+        axios({
+            url:"http://localhost:8000/ListItems?search="+search,
+            method:'get',
+        }).then(res=>{
+            dispatch({
+                type: 'set-search',
+                searchItems: res.data
+            })
         })
-    },[])
+        history.push("/search/?search="+search);
+    }
 
     return (
         <div className="navbar">
@@ -46,9 +65,9 @@ function Navbar() {
                 </div>
             </Link>
             
-            <div className="navbar_search">
-                <input type="text"/>
-            </div>
+            <form className="navbar_search" onSubmit={doSearch}>
+                <input type="text" onChange={e=>setSearch(e.target.value)}/>
+            </form>
             <div className="navbar_links">
                 <Link to="/cart">
                     <div className="navbar_linkCart">
