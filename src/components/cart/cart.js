@@ -7,64 +7,74 @@ import {useCookies} from "react-cookie"
 import CartItem from "./cartItem"
 import { getCartTotal } from '../../reducer'
 
+import { useHistory } from "react-router-dom";
+
 
 function Cart() {
-    // const [{selected, token}, dispatch] = useStateValue()
-    const [{cart}, dispatch] = useStateValue()
-    // const [total, setTotal] = useState(0)
+    const [{cart, tempCart}, dispatch] = useStateValue()
     const [cookies] = useCookies(['woodToken']);
+    let history = useHistory();
+
 
     useEffect(() => {
         // getting user
-        axios({
-            url:"https://suman-ecommerce-api.herokuapp.com/tokenToUser/",
-            method:"post",
-            headers:{
-                Authorization: "Token "+cookies.woodToken.token
-            },
-            data:{
-                token: cookies.woodToken.token
-            }
-        }).then(res=>{
-            // getting products
+        if (cookies.woodToken){
             axios({
-                url:"https://suman-ecommerce-api.herokuapp.com/products/?bought=False",
-                method:"get",
+                url:"https://suman-ecommerce-api.herokuapp.com/tokenToUser/",
+                method:"post",
                 headers:{
-                    Authorization: "Token "+cookies.woodToken.token
-                },
-                params:{
-                    search:res.data.id
-                }
-            }).then(res=>{
-                dispatch({
-                    type: 'set-cart',
-                    cart: res.data
-                })
-            })
-        })
-        
-    },[dispatch, cookies.woodToken.token]);
-
-    const buy = ()=>{
-        cart.forEach(item => {
-            axios({
-                url:"https://suman-ecommerce-api.herokuapp.com/products/"+item.id+"/",
-                method:'put',
-                headers:{
-                    Authorization: "Token "+cookies.woodToken.token
+                    Authorization: "Token "+cookies.woodToken?.token
                 },
                 data:{
-                    bought: true
+                    token: cookies.woodToken.token
                 }
-            }).catch(err=>{
-                console.log(err)
-            }).then(()=>{
-                dispatch({
-                    type:'empty-cart'
+            }).then(res=>{
+                // getting products
+                axios({
+                    url:"https://suman-ecommerce-api.herokuapp.com/products/?bought=False",
+                    method:"get",
+                    headers:{
+                        Authorization: "Token "+cookies.woodToken.token
+                    },
+                    params:{
+                        search:res.data.id
+                    }
+                }).then(res=>{
+                    dispatch({
+                        type: 'set-cart',
+                        cart: res.data
+                    })
                 })
             })
-        });
+        }
+        
+        
+    },[dispatch, cookies.woodToken?.token]);
+
+    const buy = ()=>{
+        if (cookies.woodToken){
+            cart.forEach(item => {
+                axios({
+                    url:"https://suman-ecommerce-api.herokuapp.com/products/"+item.id+"/",
+                    method:'put',
+                    headers:{
+                        Authorization: "Token "+cookies.woodToken.token
+                    },
+                    data:{
+                        bought: true
+                    }
+                }).catch(err=>{
+                    console.log(err)
+                }).then(()=>{
+                    dispatch({
+                        type:'empty-cart'
+                    })
+                })
+            });
+        }
+        else{
+            history.push("/login");
+        }
     }
 
     return (
@@ -79,10 +89,19 @@ function Cart() {
                         key = {item.id}
                     />
                 })}
+                {tempCart?.map(item=>{
+                    return <CartItem
+                        id = {item.id}
+                        name = {item.name}
+                        price = {item.price}
+                        image = {item.image}
+                        key = {item.id}
+                    />
+                })}
             </div>
             <div className="cart_details">
                 <p>Total:</p>
-                <p>	&#8377; {getCartTotal(cart)}</p>
+                <p>	&#8377; {getCartTotal(cart)+getCartTotal(tempCart)}</p>
                 <button className="cart_buy" onClick={buy}>
                     Buy
                 </button>

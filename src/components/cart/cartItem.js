@@ -9,18 +9,26 @@ function CartItem({id, image, name, price}) {
     const [,dispatch] = useStateValue()
 
     const deleteProduct = ()=>{
-        axios({
-            url:"https://suman-ecommerce-api.herokuapp.com/products/"+id+"/",
-            method:"DELETE",
-            headers:{
-                Authorization: "Token "+cookies.woodToken.token
-            }
-        }).then(()=>{
+        if (cookies.woodToken){
+            axios({
+                url:"https://suman-ecommerce-api.herokuapp.com/products/"+id+"/",
+                method:"DELETE",
+                headers:{
+                    Authorization: "Token "+cookies.woodToken.token
+                }
+            }).then(()=>{
+                dispatch({
+                    type:'delete-from-cart',
+                    id
+                })
+            })
+        }
+        else{
             dispatch({
-                type:'delete-from-cart',
+                type:'delete-from-tempCart',
                 id
             })
-        })
+        }
     }
     return (
         <div className="cart_item" key={id}>

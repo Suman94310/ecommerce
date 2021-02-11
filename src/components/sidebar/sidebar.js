@@ -6,8 +6,12 @@ import background from "./background.svg"
 import {useStateValue} from "../../stateProvider"
 import axios from 'axios';
 
+import {useCookies} from "react-cookie"
+
 function Sidebar(props) {
-    const [{selected, token}, ] = useStateValue()
+    const [{selected, token, tempCart}, dispatch] = useStateValue()
+    const [cookies] = useCookies(['woodToken']);
+
     const styles = {
         image:{
             backgroundImage: `url(${background})`
@@ -23,6 +27,7 @@ function Sidebar(props) {
         // hiding
         window.onload=()=>{
             const sideBar = document.getElementById('sideBar');
+            sideBar.style.visibility = 'hidden';
             document.onclick = (e)=>{
                 let card = hasSomeParentTheClass(e.target, 'card') || hasSomeParentTheClass(e.target, 'normalCard')
                 if(e.target.className==='card' || e.target.className==='normalCard'){
@@ -30,11 +35,6 @@ function Sidebar(props) {
                 }
                 if(e.target.id !== 'sideBar' && !card){
                     sideBar.style.visibility = 'hidden';
-                    // console.log("nyat")
-                    // dispatch({
-                    //     type: 'set-sidebar',
-                    //     value: false
-                    // })
                 }
             };
         }
@@ -42,35 +42,36 @@ function Sidebar(props) {
         
     },);
 
-    // useEffect(()=>{
-    //     if(sideBarVisible){
-    //         const sideBar = document.getElementById('sideBar');
-    //         sideBar.style.visibility = 'visible';
-    //     }
-    //     else{
-    //         const sideBar = document.getElementById('sideBar');
-    //         sideBar.style.visibility = 'hidden';
-    //     }
-    //     console.log(sideBarVisible)
-    // },[sideBarVisible])
-
     const addToCart = ()=>{
-        axios({
-            url:"https://suman-ecommerce-api.herokuapp.com/products/",
-            method:"post",
-            headers:{
-                Authorization: "Token "+token
-            },
-            data: {
-                name: selected.name,
-                price: selected.price,
-                image: selected.image
-            }
-        }).catch(({ response }) => { 
-            console.log(response.data);  
-            console.log(response.status);  
-            console.log(response.headers);  
-        })
+        if (cookies.woodToken){
+            axios({
+                url:"https://suman-ecommerce-api.herokuapp.com/products/",
+                method:"post",
+                headers:{
+                    Authorization: "Token "+token
+                },
+                data: {
+                    name: selected.name,
+                    price: selected.price,
+                    image: selected.image
+                }
+            }).catch(({ response }) => { 
+                console.log(response.data);  
+                console.log(response.status);  
+                console.log(response.headers);  
+            })
+        }
+        else{
+            dispatch({
+                type: 'add-to-tempCart',
+                item:{
+                    name: selected.name,
+                    price: selected.price,
+                    image: selected.image,
+                    id: 100+tempCart.length
+                }
+            })
+        }
     }
     
 

@@ -42,7 +42,7 @@ function Login() {
                     <input type="password" name="password"/>
                     <button type="submit" className="login_submit">SUBMIT</button>
                 </form>
-                <p className="login_register">Don't have an account ? register <a href="/login">here</a></p>
+                <p className="login_register">Don't have an account ? register <a href="/register">here</a></p>
             </div>
         </div>
     )
