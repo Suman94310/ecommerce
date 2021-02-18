@@ -11,7 +11,7 @@ import {useStateValue} from "../../stateProvider"
 
 function User() {
     const [cookies] = useCookies(['woodToken']);
-    const [history, setHistory] = useState([])
+    const [History, setHistory] = useState([])
     const [{user},] = useStateValue()
 
 
@@ -39,7 +39,7 @@ function User() {
                 </div>
             </div>
             <div className="user_bought">
-                {history.map(item=>(
+                {History.map(item=>(
                     <Item
                         name={item.name}
                         image={item.image}
