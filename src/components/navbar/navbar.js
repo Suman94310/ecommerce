@@ -44,7 +44,7 @@ function Navbar() {
     const doSearch = (e)=>{
         e.preventDefault()
         axios({
-            url:"https://suman-ecommerce-api.herokuapp.com/ListItems/",
+            url:"https://suman-ecommerce-api.herokuapp.com/ListItems?search="+search,
             method:'get',
         }).then(res=>{
             dispatch({
