@@ -14,6 +14,7 @@ function Register() {
             "https://suman-ecommerce-api.herokuapp.com/api-token-auth/",
             new FormData(document.getElementById("register_form"))
         ).then((res)=>{
+            console.log(res)
             dispatch({
                 type: 'SET_USER',
                 token: res.data.token
