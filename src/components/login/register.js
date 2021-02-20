@@ -11,7 +11,7 @@ function Register() {
     const login = (e)=>{
         e.preventDefault()
         axios.post(
-            "https://suman-ecommerce-api.herokuapp.com/api-token-auth",
+            "https://suman-ecommerce-api.herokuapp.com/api-token-auth/",
             new FormData(document.getElementById("register_form"))
         ).then((res)=>{
             dispatch({
