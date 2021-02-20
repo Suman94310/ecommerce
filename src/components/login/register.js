@@ -48,6 +48,9 @@ function Register() {
             <div className="login_icon">
                 <i className="fas fa-user"></i>
             </div>
+            <div className="register_error">
+                {error}
+            </div>
             <div className="login_inputs">
                 <form action="POST" className="login_form" id="register_form" onSubmit={login}>
                     <label htmlFor="username">Username</label>

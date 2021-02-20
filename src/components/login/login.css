@@ -60,3 +60,11 @@ a{
     color: rgb(150, 174, 177);
     text-decoration: underline;
 }
+
+.register_error{
+    background: #ffffff;
+    color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
