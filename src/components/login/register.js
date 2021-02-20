@@ -30,6 +30,7 @@ function Register() {
                 }
                 else{
                     setError("Username Already Taken")
+                    document.getElementById("register_error").style.visibility = "visibles"
                 }
                 dispatch({
                     type: 'SET_USER',
