@@ -50,7 +50,7 @@ function Register() {
             <div className="login_icon">
                 <i className="fas fa-user"></i>
             </div>
-            <div className="register_error">
+            <div className="register_error" id="register_error">
                 {error}
             </div>
             <div className="login_inputs">
