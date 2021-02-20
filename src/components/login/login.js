@@ -6,10 +6,14 @@ import {useStateValue} from "../../stateProvider"
 import axios from 'axios'
 import { useCookies } from 'react-cookie';
 
+import { useHistory, Link } from "react-router-dom";
+
+
 function Login() {
 
     const [, dispatch] = useStateValue()
     const [ ,setCookie,] = useCookies(['woodToken']);
+    
 
 
     const login = (e)=>{
@@ -42,7 +46,7 @@ function Login() {
                     <input type="password" name="password"/>
                     <button type="submit" className="login_submit">SUBMIT</button>
                 </form>
-                <p className="login_register">Don't have an account ? register <a href="/register">here</a></p>
+                <p className="login_register">Don't have an account ? register <Link to="/register">here</Link></p>
             </div>
         </div>
     )
