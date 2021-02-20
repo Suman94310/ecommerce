@@ -30,7 +30,7 @@ function Register() {
                 }
                 else{
                     setError("Username Already Taken")
-                    document.getElementById("register_error").style.visibility = "visibles"
+                    document.getElementById("register_error").style.visibility = "visible"
                 }
                 dispatch({
                     type: 'SET_USER',
@@ -40,6 +40,7 @@ function Register() {
         }
         else{
             setError("Passwords didn't matched")
+            document.getElementById("register_error").style.visibility = "visible"
         }
     }
 
