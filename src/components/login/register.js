@@ -11,8 +11,8 @@ function Register() {
     const login = (e)=>{
         e.preventDefault()
         axios.post(
-            "localhost:8000/api-token-auth",
-            new FormData(document.getElementById("login_form"))
+            "https://suman-ecommerce-api.herokuapp.com/api-token-auth",
+            new FormData(document.getElementById("register_form"))
         ).then((res)=>{
             dispatch({
                 type: 'SET_USER',
