@@ -13,7 +13,7 @@ function Login() {
 
     const [, dispatch] = useStateValue()
     const [ ,setCookie,] = useCookies(['woodToken']);
-    
+    let history = useHistory();
 
 
     const login = (e)=>{
@@ -30,7 +30,8 @@ function Login() {
                 // let date = (new Date()).getUTCSeconds
                 setCookie("woodToken", res.data, {path: "/"});
             }
-        })  
+        })
+        history.push(history[history.length-1]);
     }
 
     return (
