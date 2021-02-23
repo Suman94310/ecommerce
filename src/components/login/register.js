@@ -5,7 +5,7 @@ import {useStateValue} from "../../stateProvider"
 
 import axios from 'axios'
 
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 function Register() {
     const [, dispatch] = useStateValue()
@@ -63,7 +63,7 @@ function Register() {
                     <input type="password" name="password" id="password2"/>
                     <button type="submit" className="login_submit">SUBMIT</button>
                 </form>
-                <p className="login_register">Already have an account ? login <a href="/login">here</a></p>
+                <p className="login_register">Already have an account ? login <Link to="/login">here</Link></p>
             </div>
         </div>
     )

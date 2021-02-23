@@ -66,7 +66,7 @@ function Navbar() {
             </Link>
             
             <form className="navbar_search" onSubmit={doSearch}>
-                <input type="text" onChange={e=>setSearch(e.target.value)}/>
+                <input type="text" onChange={e=>setSearch(e.target.value)} placeholder="Search"/>
             </form>
             <div className="navbar_links">
                 <Link to="/cart">
@@ -79,6 +79,7 @@ function Navbar() {
                     <Link to="/user">
                         <div className="navbar_linkProfile">
                             <i className="fas fa-user"></i>
+                            &nbsp;
                             {user?.username}
                         </div>
                     </Link>:
