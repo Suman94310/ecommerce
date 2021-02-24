@@ -7,6 +7,9 @@
 
 .user_detail{
     display: flex;
+    flex-direction: row;
+    height: 10%;
+    width: 20%;
 }
 
 .user_credentials{
