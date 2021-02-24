@@ -59,10 +59,10 @@
     flex-wrap: wrap;
 }
 
-.home_bestTabLink .card:first-child{
+.home_bestTab :first-child{
     margin-left: 0;
 }
 
-.home_bestTabLink:last-child{
+.home_bestTab :last-child{
     margin-right: 0;
 }
