@@ -58,3 +58,11 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.home_bestTabLink:first-child{
+    margin-left: 0;
+}
+
+.home_bestTabLink:last-child{
+    margin-right: 0;
+}
