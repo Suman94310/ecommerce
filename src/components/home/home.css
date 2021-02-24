@@ -59,7 +59,7 @@
     flex-wrap: wrap;
 }
 
-.home_bestTabLink:first-child{
+.home_bestTabLink .card:first-child{
     margin-left: 0;
 }
 
