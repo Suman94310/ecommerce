@@ -2,16 +2,17 @@
     display: flex;
     flex-direction: column;
     width: 90%;
+    color: white;
 }
 
 .user_detail{
     display: flex;
-    color: white;
 }
 
 .user_credentials{
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 .user_bought{
