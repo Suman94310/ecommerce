@@ -33,11 +33,13 @@ function User() {
     return (
         <div className="user">
             <div className="user_details">
-                <img src="" alt=""/>
+                <img src={user.image} alt=""/>
                 <div className="user_credentials">
                     <h2>{user.username}</h2>
+                    {user.email}
                 </div>
             </div>
+            <h2>Things you have bought</h2>
             <div className="user_bought">
                 {History.map(item=>(
                     <Item

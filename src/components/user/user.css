@@ -6,6 +6,12 @@
 
 .user_detail{
     display: flex;
+    color: white;
+}
+
+.user_credentials{
+    display: flex;
+    flex-direction: column;
 }
 
 .user_bought{
