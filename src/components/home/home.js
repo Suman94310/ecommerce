@@ -46,6 +46,21 @@ function Home() {
         }
     }
 
+    const handletagSpan = (e,tag)=>{
+        e.preventDefault()
+        let index = tags.indexOf(tag)
+        let temp = [...tags]
+        if(index >= 0){
+            temp.splice(index,1)
+            setTags(temp)
+        }
+        else{
+            temp.push(tag)
+            setTags(temp)
+
+        }
+    }
+
     const createCards = (tag)=>{
         let cards = []
         for(let i=0; i<items.length; i++){
@@ -101,22 +116,22 @@ function Home() {
                     {/* TAGS */}
                     <label class="checkboxContainer" >Chair
                         <input type="checkbox" value="Chair" onClick={(e)=>handletag(e,'chair')}/>
-                        <span class="checkmark" onClick={(e)=>handletag(e,'chair')}></span>
+                        <span class="checkmark" onClick={(e)=>handletagSpan(e,'chair')}></span>
                     </label>
 
                     <label class="checkboxContainer" >Table
                         <input type="checkbox" value="Chair" onClick={(e)=>handletag(e,'table')} onChange={(e)=>handletag(e,'table')}/>
-                        <span class="checkmark" onClick={(e)=>handletag(e,'table')}></span>
+                        <span class="checkmark" onClick={(e)=>handletagSpan(e,'table')}></span>
                     </label>
 
                     <label class="checkboxContainer" >Sofa
                         <input type="checkbox" value="Chair" onClick={(e)=>handletag(e,'sofa')}/>
-                        <span class="checkmark" onClick={(e)=>handletag(e,'sofa')}></span>
+                        <span class="checkmark" onClick={(e)=>handletagSpan(e,'sofa')}></span>
                     </label>
 
                     <label class="checkboxContainer" >Decorations
                         <input type="checkbox" value="Chair" onClick={(e)=>handletag(e,'decorations')}/>
-                        <span class="checkmark" onClick={(e)=>handletag(e,'decorations')}></span>
+                        <span class="checkmark" onClick={(e)=>handletagSpan(e,'decorations')}></span>
                     </label>
                 </div>
                 <div className="home_itemsList">
