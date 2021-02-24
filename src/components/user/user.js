@@ -33,7 +33,7 @@ function User() {
     return (
         <div className="user">
             <div className="user_details">
-                <img src={user.image} alt=""/>
+                <img src={"https://suman-ecommerce-api.herokuapp.com"+user.image} alt=""/>
                 <div className="user_credentials">
                     <h2>{user.username}</h2>
                     {user.email}
