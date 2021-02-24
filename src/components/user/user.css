@@ -5,11 +5,13 @@
     color: white;
 }
 
-.user_detail{
+.user_details{
     display: flex;
     flex-direction: row;
-    height: 10%;
-    width: 20%;
+}
+
+.user_details img{
+    max-width: 50px;
 }
 
 .user_credentials{
