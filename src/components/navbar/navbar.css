@@ -42,6 +42,9 @@
     align-items: center;
     justify-content: space-between;
     width: 10%;
+}
+
+.navbar_links a{
     margin-right: 10px;
 }
 
