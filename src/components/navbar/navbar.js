@@ -55,6 +55,10 @@ function Navbar() {
         history.push("/search/?search="+search);
     }
 
+    const logout = ()=>{
+        removeCookie('woodToken', [])
+    }
+
     return (
         <div className="navbar">
             <Link to="/">
@@ -76,13 +80,19 @@ function Navbar() {
                 </Link>
                 {
                     cookies.woodToken?
-                    <Link to="/user">
-                        <div className="navbar_linkProfile">
-                            <i className="fas fa-user"></i>
-                            &nbsp;
-                            {user?.username}
+                    <div style={{display: 'flex'}}>
+                        <Link to="/user">
+                            <div className="navbar_linkProfile">
+                                <i className="fas fa-user"></i>
+                                &nbsp;
+                                {user?.username}
+                            </div>
+                        </Link>
+                        <div className="navbar_linkLogout" onClick={logout}>
+                            Logout
                         </div>
-                    </Link>:
+                    </div>
+                    :
                     <Link to="/login">
                         <div className="navbar_linkProfile">
                             <i className="fas fa-user"></i>
