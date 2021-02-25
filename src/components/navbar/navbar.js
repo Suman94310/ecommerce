@@ -78,6 +78,7 @@ function Navbar() {
                         <i className="fas fa-shopping-cart"></i>
                     </div>
                 </Link>
+                test
                 {
                     cookies.woodToken?
                     <div style={{display: 'flex'}}>
