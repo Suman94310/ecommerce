@@ -8,14 +8,14 @@ import {Link} from "react-router-dom";
 import {useStateValue} from "../../stateProvider"
 import axios from 'axios';
 
-import {useCookies, removeCookie} from "react-cookie"
+import {useCookies} from "react-cookie"
 
 
 function Navbar() {
     const [{user}, dispatch] = useStateValue()
     const [search, setSearch] = useState()
     // setCookie, removeCookie add this bellow with cookies if it stops loging
-    const [cookies] = useCookies(['woodToken']);
+    const [cookies, , removeCookie] = useCookies(['woodToken']);
     let history = useHistory();
 
 
