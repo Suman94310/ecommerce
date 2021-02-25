@@ -29,7 +29,7 @@
     border: none;
     background: #3B4445;
     height: 5vh;
-    max-width: 35vw;
+    width: 35vw;
     border-radius: 7px;
 }
 
@@ -42,6 +42,7 @@
     align-items: center;
     justify-content: space-between;
     width: 10%;
+    margin-right: 10px;
 }
 
 .navbar_links div{
