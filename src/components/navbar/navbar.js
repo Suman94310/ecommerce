@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 import {useStateValue} from "../../stateProvider"
 import axios from 'axios';
 
-import {useCookies} from "react-cookie"
+import {useCookies, removeCookie} from "react-cookie"
 
 
 function Navbar() {
@@ -78,7 +78,6 @@ function Navbar() {
                         <i className="fas fa-shopping-cart"></i>
                     </div>
                 </Link>
-                test
                 {
                     cookies.woodToken?
                     <div style={{display: 'flex'}}>
