@@ -29,7 +29,7 @@
     border: none;
     background: #3B4445;
     height: 5vh;
-    width: 40vw;
+    max-width: 35vw;
     border-radius: 7px;
 }
 

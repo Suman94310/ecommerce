@@ -80,7 +80,7 @@ function Navbar() {
                 </Link>
                 {
                     cookies.woodToken?
-                    <div style={{display: 'flex'}}>
+                    <div style={{display: 'flex', marginRight:'10px'}}>
                         <Link to="/user">
                             <div className="navbar_linkProfile">
                                 <i className="fas fa-user"></i>
