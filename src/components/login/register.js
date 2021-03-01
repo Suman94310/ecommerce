@@ -36,6 +36,8 @@ function Register() {
                     type: 'SET_USER',
                     token: res.data.token
                 })
+            }).catch(res=>{
+                console.log(res.status)
             })
         }
         else{
