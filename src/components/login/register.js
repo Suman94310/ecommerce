@@ -64,6 +64,8 @@ function Register() {
                 <form action="POST" className="login_form" id="register_form" onSubmit={login}>
                     <label htmlFor="username">Username</label>
                     <input type="text" name="username"/>
+                    <label htmlFor="email">Email</label>
+                    <input type="text" name="email"/>
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" id="password1"/>
                     <label htmlFor="password">Reenter the password</label>
