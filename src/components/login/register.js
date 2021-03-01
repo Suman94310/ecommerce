@@ -67,8 +67,8 @@ function Register() {
                     <input type="text" name="username"/>
                     <label htmlFor="email">Email</label>
                     <input type="text" name="email"/>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password1"/>
+                    <label htmlFor="password1">Password</label>
+                    <input type="password" name="password1" id="password1"/>
                     <label htmlFor="password">Reenter the password</label>
                     <input type="password" name="password" id="password2"/>
                     <button type="submit" className="login_submit">SUBMIT</button>
