@@ -37,7 +37,12 @@ function Register() {
                     token: res.data.token
                 })
             }).catch(res=>{
-                console.log(res.status)
+                axios.post(
+                    "https://suman-ecommerce-api.herokuapp.com/register/",
+                    new FormData(document.getElementById("register_form"))
+                ).then((res)=>{
+                    history.push("/login");
+                })
             })
         }
         else{
