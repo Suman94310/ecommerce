@@ -12,7 +12,7 @@ import {useStateValue} from "../../stateProvider"
 function User() {
     const [cookies] = useCookies(['woodToken']);
     const [History, setHistory] = useState([])
-    const [{user},] = useStateValue()
+    const [{user,},] = useStateValue()
 
 
     useEffect(()=>{
@@ -28,7 +28,7 @@ function User() {
         }).then(res=>{
             setHistory(res.data)
         })
-    },[cookies.woodToken.token])
+    },[cookies.woodToken.token, user?.id])
     
     return (
         <div className="user">
