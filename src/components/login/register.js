@@ -37,7 +37,6 @@ function Register() {
                     token: res.data.token
                 })
             }).catch(res=>{
-                console.log(new FormData(document.getElementById("register_form"))                )
                 axios.post(
                     "https://suman-ecommerce-api.herokuapp.com/register/",
                     new FormData(document.getElementById("register_form"))

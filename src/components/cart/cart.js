@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom";
 
 
 function Cart() {
-    const [{cart, tempCart}, dispatch] = useStateValue()
+    const [{cart, tempCart, user}, dispatch] = useStateValue()
     const [cookies] = useCookies(['woodToken']);
     let history = useHistory();
 
@@ -31,7 +31,7 @@ function Cart() {
             }).then(res=>{
                 // getting products
                 axios({
-                    url:"https://suman-ecommerce-api.herokuapp.com/products/?bought=False",
+                    url:"https://suman-ecommerce-api.herokuapp.com/products/?bought=False&owner="+user.username,
                     method:"get",
                     headers:{
                         Authorization: "Token "+cookies.woodToken.token
