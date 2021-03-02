@@ -31,7 +31,7 @@ function Cart() {
             }).then(res=>{
                 // getting products
                 axios({
-                    url:"https://suman-ecommerce-api.herokuapp.com/products/?bought=False&owner="+user?.username,
+                    url:"https://suman-ecommerce-api.herokuapp.com/products/?bought=False&owner="+user?.id,
                     method:"get",
                     headers:{
                         Authorization: "Token "+cookies.woodToken.token
@@ -49,7 +49,7 @@ function Cart() {
         }
         
         
-    },[dispatch, cookies.woodToken, cookies.woodToken?.token, user?.username]);
+    },[dispatch, cookies.woodToken, cookies.woodToken?.token, user?.id]);
 
     const buy = ()=>{
         if (cookies.woodToken){
