@@ -49,7 +49,7 @@ function Cart() {
         }
         
         
-    },[dispatch, cookies.woodToken, cookies.woodToken?.token],user, user?.username);
+    },[dispatch, cookies.woodToken, cookies.woodToken?.token, user?.username]);
 
     const buy = ()=>{
         if (cookies.woodToken){
